@@ -6,6 +6,16 @@ System must have ffmpeg and MP4Box (version GPAC 0.5.2 or newer) installed
 - MP4Box
 `sudo apt-get install gpac`
 
+## Run example
+1. ./gradlew bootRun
+2. http://localhost:8080
+3. Upload `clip.mp4` or `star_trails.mp4` from `src/main/resources/samples`. Files will be converted in `/tmp`
+4. Play the video
+
+OR
+
+Play regular MP4 content from classpath (`clip` or `star_trails`)
+
 ## Encoding commands
 1. `ffmpeg -i clip.mp4 -s hd1080 -c:v libx264 -crf 23 -strict -2 clip_1080p.mp4`
 or

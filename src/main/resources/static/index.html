@@ -149,7 +149,14 @@
         <hr>
 
         <div>
-            <video autoplay controls src="/direct/star_trails_1080p.mp4"></video>
+            <md-field>
+                <label>filename w/o extension</label>
+                <md-input v-model="filename"></md-input>
+            </md-field>
+            <md-button v-on:click="doPlayVideo()" style="color: white;background-color: #4CAF50">Play</md-button>
+        </div>
+        <div>
+            <video controls id="video" src="/direct/"></video>
         </div>
     </div>
 </template>
@@ -247,7 +254,20 @@
     });
 
     const PlayFileClassPath = Vue.component('play-video-classpath', {
-        template: '#play-video-classpath'
+        template: '#play-video-classpath',
+        data: function () {
+            return {
+                filename: 'clip.mp4'
+            }
+        },
+        methods: {
+            doPlayVideo: function () {
+                var video = document.getElementById('video');
+                video.setAttribute("src", "/direct/" + this.filename);
+                video.load();
+                video.play();
+            }
+        }
     });
 
     const routes = [

@@ -17,11 +17,9 @@ import reactor.core.scheduler.Schedulers
 @RequestMapping("/direct")
 class DirectContentVideoEndpoint {
 
-    private val mp4File = ClassPathResource("samples/star_trails.mp4")
-
     @GetMapping("/{fileName}", produces = ["video/mp4"])
     fun getMp4(@PathVariable("fileName") fileName: String): Mono<out Resource> {
-        return mp4File.toMono()
+        return ClassPathResource("samples/$fileName.mp4").toMono()
                 .subscribeOn(Schedulers.elastic())
     }
 }
