@@ -22,7 +22,7 @@ class FfmpegCommand {
         val newFile = Paths.get(file.parent.absolutePath(), "${UUID.randomUUID()}_${quality.code}.mp4")
         val newFilePath = newFile.absolutePath()
 
-        val cmdLine = CommandLine("ffmpeg")
+        val cmdLine = CommandLine("avconv")
         cmdLine.addArgument("-i")
         cmdLine.addArgument(origFilePath, true)
         cmdLine.addArgument("-s")

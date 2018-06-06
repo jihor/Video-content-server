@@ -21,6 +21,8 @@ class Mp4BoxCommand {
         val mpegDashDir = Files.createTempDirectory("split-mp4-to-mpeg-dash-fragments")
         val mpegDashDirPath = mpegDashDir.absolutePath()
 
+        convertedFiles.forEach { (quality, file) -> Files.createDirectories(mpegDashDir.resolve(quality.code)) }
+
         val cmdLine = CommandLine("MP4Box")
         cmdLine.addArgument("-dash")
         cmdLine.addArgument("8000")
